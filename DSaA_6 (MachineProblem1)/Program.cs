@@ -16,23 +16,23 @@ namespace DSaA_6__MachineProblem1_
             for (int i = 0; i < Card.Length; i++)
                 Card[i] = new int[5];
 
-            for (int i = 0; i < Card.Length; i++)
+            for (int i = 0; i < Card.Length; i++) // This is a outer array of for loop that creates the COLUMN
             {
-                for (int j = 0; j < Card[i].Length; j++)
+                for (int j = 0; j < Card[i].Length; j++) // This is a inner array of for loop that creates the ROW
                 {
-                    if (i == 0)
+                    if (i == 0) // Creates value for the first instances
                         Card[i][j] = rng.Next(1 + (j * 15), 16 + (j * 15));
                     else
                     {
                         bool numPass = false;
                         while (!numPass)
                         {
-                            temp = rng.Next(1 + (j * 15), 16 + (j * 15));
+                            temp = rng.Next(1 + (j * 15), 16 + (j * 15)); // Increments by 15 on min and max value per row for BINGO
                             for (int k = 0; k < 5; k++)
                             {
-                                if (Card[k][j] == temp)
+                                if (Card[k][j] == temp) // Checks every ROW for reoccuring value
                                     break;
-                                if (k == 4)
+                                if (k == 4) // If done checking assign the value to the array
                                 {
                                     Card[i][j] = temp;
                                     numPass = true;
@@ -40,7 +40,7 @@ namespace DSaA_6__MachineProblem1_
                             }
                         }
                     }
-                    Console.Write($"[{Card[i][j]}]\t");
+                    Console.Write($"[{Card[i][j]}]\t"); 
                 }
                 Console.WriteLine("");
             }
