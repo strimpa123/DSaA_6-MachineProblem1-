@@ -26,7 +26,7 @@ namespace DSaA_6__MachineProblem1_
                         temp = rng.Next(1 + (j * 15), 16 + (j * 15)); // Generate Random Number and Increments by 15 on min and max value per row for BINGO
                         for (int k = 0; k < 5; k++)
                         {
-                            if (i == 0)
+                            if (i == 0) // Assigns First Instance for first column
                             {
                                 Card[i][j] = temp;
                                 numPass = true;
