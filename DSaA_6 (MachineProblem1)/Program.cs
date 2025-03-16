@@ -20,23 +20,24 @@ namespace DSaA_6__MachineProblem1_
             {
                 for (int j = 0; j < Card[i].Length; j++) // This is a inner array of for loop that creates the ROW
                 {
-                    if (i == 0) // Creates value for the first instances
-                        Card[i][j] = rng.Next(1 + (j * 15), 16 + (j * 15));
-                    else
+                    bool numPass = false;
+                    while (!numPass)
                     {
-                        bool numPass = false;
-                        while (!numPass)
+                        temp = rng.Next(1 + (j * 15), 16 + (j * 15)); // Generate Random Number and Increments by 15 on min and max value per row for BINGO
+                        for (int k = 0; k < 5; k++)
                         {
-                            temp = rng.Next(1 + (j * 15), 16 + (j * 15)); // Increments by 15 on min and max value per row for BINGO
-                            for (int k = 0; k < 5; k++)
+                            if (i == 0)
                             {
-                                if (Card[k][j] == temp) // Checks every ROW for reoccuring value
-                                    break;
-                                if (k == 4) // If done checking assign the value to the array
-                                {
-                                    Card[i][j] = temp;
-                                    numPass = true;
-                                }
+                                Card[i][j] = temp;
+                                numPass = true;
+                                break;
+                            }
+                            if (Card[k][j] == temp) // Checks every ROW for reoccuring value
+                                break;
+                            if (k == 4) // If done checking assign the value to the array
+                            {
+                                Card[i][j] = temp;
+                                numPass = true;
                             }
                         }
                     }
